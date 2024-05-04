@@ -3,7 +3,7 @@
 
 ### Step for installing and Running
 #### Step 1.	Download the smartify-Assignment.zip folder and then extract it.
-#### Step 2.	After extracting, open folder and go to smartify-autotopup folder
+#### Step 2.	After extracting, open folder and go to creditSlider-smartify folder
 #### Step 3.	After opening a folder, open it on code editor.
 #### Step 4.	Then run on terminal, “npm install” and wait for installing it. It will take some time.
 #### Step 5.	Then run “npm start” for running a program. It will be running on http://localhost:3000/

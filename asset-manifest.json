@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CreditSlider-Smartify/static/css/main.86722cc4.css",
+    "main.js": "/CreditSlider-Smartify/static/js/main.c0c7a054.js",
+    "static/js/453.75232800.chunk.js": "/CreditSlider-Smartify/static/js/453.75232800.chunk.js",
+    "index.html": "/CreditSlider-Smartify/index.html",
+    "main.86722cc4.css.map": "/CreditSlider-Smartify/static/css/main.86722cc4.css.map",
+    "main.c0c7a054.js.map": "/CreditSlider-Smartify/static/js/main.c0c7a054.js.map",
+    "453.75232800.chunk.js.map": "/CreditSlider-Smartify/static/js/453.75232800.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86722cc4.css",
+    "static/js/main.c0c7a054.js"
+  ]
+}

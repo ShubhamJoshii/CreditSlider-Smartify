@@ -6,22 +6,24 @@ import { useState } from "react";
 import TopupSlider from "./TopupSlider";
 import TopUPSwitch from "./Switch-TopUP";
 
-
 // CONFIRM AUTO-PURCHASE Button Styles
 const ColorButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: "#9747ff",
-  color:"white",
-  fontWeight:700,
-  textTransform:"initial",
+  color: "white",
+  fontWeight: 700,
+  textTransform: "initial",
   "&:hover": {
     backgroundColor: "#9747ff",
+  },
+  "@media screen and (max-width: 850px)": {
+    marginTop: "40px",
   },
 }));
 
 // Auto-TopUp Main Component
 const AutoTopup = () => {
   // useState for mainting value like show AutoTopUp Setting and updatingValues
-  const [showAutoTopUp, setShowAutoTopUp] = useState<boolean>(true);       
+  const [showAutoTopUp, setShowAutoTopUp] = useState<boolean>(true);
   const [topUpValue, settopUpValue] = useState<any>({
     cost: 10,
     credits: 1200,
@@ -31,9 +33,12 @@ const AutoTopup = () => {
     <Box
       sx={{
         padding: "30px",
-        width: "100%",
         borderRadius: "10px",
+        width: "800px",
         boxShadow: "0 0 10px #d9cece",
+        "@media screen and (max-width: 850px)": {
+          width: "100%",
+        },
         marginTop: "80px",
       }}
     >
@@ -45,7 +50,7 @@ const AutoTopup = () => {
           gap: 1,
         }}
       >
-        <Typography variant="h5" style={{ fontWeight: "bolder" }}>
+        <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
           Setup Auto Top-up
         </Typography>
 
@@ -73,30 +78,23 @@ const AutoTopup = () => {
         >
           <Typography
             variant="body1"
-            style={{ textAlign: "start", color: "grey" }}
+            sx={{ textAlign: "start", color: "grey" }}
           >
             Once the credit goes below a minimum threshold{" "}
-            <span style={{ color: "#9747ff", fontWeight: 600 }}>50</span>, we
-            will auto-purchase{" "}
-            <span style={{ color: "#9747ff", fontWeight: 600 }}>
+            <span className="text-[#9747ff] font-semibold">50</span>, we will
+            auto-purchase{" "}
+            <span className="text-[#9747ff] font-semibold">
               {topUpValue.credits}
             </span>{" "}
             credits and add them to your account.{" "}
-            <a
-              href="/"
-              style={{
-                fontWeight: "bold",
-                textDecoration: "underline",
-                color: "inherit",
-              }}
-            >
+            <a href="/" className="text-inherit underline font-bold">
               Learn more
             </a>
           </Typography>
 
           {/* TopUp Slider */}
           <Box sx={{ width: "100%", height: "100px" }}>
-            <TopupSlider settopUpValue={settopUpValue} />
+            <TopupSlider topUpValue={topUpValue} settopUpValue={settopUpValue} />
           </Box>
 
           {/* CONFIRM AUTO-PURCHASE Button */}
@@ -104,7 +102,9 @@ const AutoTopup = () => {
             variant="contained"
             onClick={() =>
               // for printing the selected auto Top-Up value
-              console.log(`Your Auto TopUp is set at cost $${topUpValue.cost} for credits ${topUpValue.credits}`)
+              console.log(
+                `Your Auto TopUp is set at cost $${topUpValue.cost} for credits ${topUpValue.credits}`
+              )
             }
           >
             Confirm auto-purchase

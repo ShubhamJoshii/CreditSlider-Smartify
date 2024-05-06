@@ -1,8 +1,14 @@
 import { Slider } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // TypeScript
+interface TopUpValueType {
+  cost: number;
+  credits: number;
+}
+
 interface ChildProps {
+  topUpValue:TopUpValueType;
   settopUpValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -13,23 +19,19 @@ interface SliderData {
   label: any;
 }
 
+
 // for creating a label for slider
-function setLabel(cost: number, credit: number, lastElement: string = "0px") {
+function setLabel(cost: number, credit: number) {
   return (
     <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        marginLeft: lastElement,
-      }}
-      className="sliderLabels"
+      className="flex justify-center items-center"
     >
-      <div style={{ textAlign: "center", width: "40%" }}>
-        <p style={{ fontWeight: "bolder" }}>$ {cost}</p>
+      <div className="text-center w-[40%]">
+        <p className="font-bold">$ {cost}</p>
         <p
-          style={{ color: "grey", marginTop: "-10px" }}
-          className="credit-Text"
+          className="rotate-[-90deg] whitespace-nowrap mt-[55px] sm:text-center sm:whitespace-pre-line custome850:text-start 
+          sm:rotate-0 
+          custome850:whitespace-nowrap  text-[grey] sm:mt-0"
         >
           <span>{credit}</span> <span>credits</span>
         </p>
@@ -38,13 +40,14 @@ function setLabel(cost: number, credit: number, lastElement: string = "0px") {
   );
 }
 
+
 // Top-Up Slider Data
 const sliderData: SliderData[] = [
   {
     value: 0,
     cost: 5,
     credits: 500,
-    label: setLabel(5, 500),
+    label: setLabel(5, 50),
   },
   {
     value: 20,
@@ -74,13 +77,28 @@ const sliderData: SliderData[] = [
     value: 100,
     cost: 30,
     credits: 5000,
-    label: setLabel(30, 5000, "-90px"),
+    label: setLabel(30, 5000),
+  },
+  {
+    value: 120,
+    cost: 30,
+    credits: 5000,
+    label: setLabel(30, 5000),
   },
 ];
 
 
 // Slider Component
-const TopupSlider: React.FC<ChildProps> = ({ settopUpValue }) => {
+const TopupSlider: React.FC<ChildProps> = ({topUpValue, settopUpValue }) => {
+  
+  // for providing a Default value to slider by finding equivalent cost
+  const [defaultValue, setDefaultValue] = useState(20);
+  
+  // for running only when topUpValue Updates
+  useEffect(()=>{
+    let temp:number = sliderData.find((e) => topUpValue?.cost === e.cost)?.value || 20;
+    setDefaultValue(temp);
+  },[topUpValue])
 
   // for updating Auto-Top state
   const updateTopUp = (event: any) => {
@@ -100,11 +118,16 @@ const TopupSlider: React.FC<ChildProps> = ({ settopUpValue }) => {
       aria-label="Restricted values"
       defaultValue={20}
       step={20}
+      value={defaultValue}
       marks={sliderData}
       valueLabelDisplay="off"
-      style={{ color: "#9747ff" }}
-      // for changing styling of Slider Thumb Circle
       sx={{
+        color:"#9747ff",
+        width:"95%",
+        "& .MuiSlider-rail": {
+          width:"105%"  
+        },
+        // for changing styling of Slider Thumb Circle
         "& .MuiSlider-thumb": {
           backgroundImage: "radial-gradient(white 35%, #9747ff 0%)",
         },

@@ -11,11 +11,11 @@
 
 
 ### Working of Website: 
-Website running on http://localhost:3000/ 
+Website running on http://localhost:3000/ OR http://localhost:3000/CreditSlider-Smartify 
 #### 1.	By default, Auto-Top-up setting is Visible and value is set 1200 credits
 #### 2.	You can change visibility by on/off of switch. 
 #### 3.	You can change/set Auto-Top-up value by moving slider on website according to that state update it.
-![App Screenshot](https://res.cloudinary.com/dhyw7q9nz/image/upload/v1714815645/lbut84hhogbeeopfhhe3.png)
+![App Screenshot](https://res.cloudinary.com/dhyw7q9nz/image/upload/v1716274972/kbrqujblwfrrys0rzhej.png)
  
 #### 4.	When you click on Button called “Confirm auto-purchase” then it will print on console about selected credit amount and credit value.
 *   This Auto-Top-Up components are present in “./src/Components/AutoTopup/index.tsx”
